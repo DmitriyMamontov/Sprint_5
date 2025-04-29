@@ -1,7 +1,7 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from data import Credentials
+from data import *
 from helper import generate_registration_data
 from locators import Locators
 from curl import *
@@ -17,8 +17,8 @@ class TestNavigationSections:
         active_tab = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located(Locators.ACTIVE_SECTION)
         )
-        assert active_tab.text == "Соусы"
-        assert "current" in sauces_tab.get_attribute("class")
+        assert active_tab.text == Sections.SAUCES
+        assert Classes.ACTIVE_TAB in sauces_tab.get_attribute("class")
 
     def test_switch_to_toppings_section(self, driver):
         toppings_tab = WebDriverWait(driver, 10).until(
@@ -28,8 +28,8 @@ class TestNavigationSections:
         active_tab = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located(Locators.ACTIVE_SECTION)
         )
-        assert active_tab.text == "Начинки"
-        assert "current" in toppings_tab.get_attribute("class")
+        assert active_tab.text == Sections.TOPPINGS
+        assert Classes.ACTIVE_TAB in toppings_tab.get_attribute("class")
 
     def test_switch_to_buns_section(self, driver):
         toppings_tab = WebDriverWait(driver, 10).until(
@@ -45,5 +45,5 @@ class TestNavigationSections:
         active_tab = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located(Locators.ACTIVE_SECTION)
         )
-        assert active_tab.text == Credentials.name_section_buns
-        assert "current" in buns_tab.get_attribute("class")
+        assert active_tab.text == Sections.BUNS
+        assert Classes.ACTIVE_TAB in buns_tab.get_attribute("class")

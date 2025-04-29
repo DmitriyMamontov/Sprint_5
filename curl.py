@@ -1,4 +1,2 @@
 main_site = 'https://stellarburgers.nomoreparties.site/'
-api_base = f'{main_site}/api'
-auth_endpoint = f'{api_base}/signin'
-
+registration_endpoint = 'https://stellarburgers.nomoreparties.site/login'

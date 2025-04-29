@@ -5,13 +5,12 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from curl import *
 
-from curl import *
 from data import Credentials
 from locators import Locators
+
 @pytest.fixture(scope="session")
 def driver():
     options = Options()
-    options.binary_location = r"C:\Users\USER\AppData\Local\Google\Chrome\Application\chrome.exe"
     options.add_argument("--window-size=1200,600")
     options.add_argument("--start-maximized")
     options.add_argument("--no-sandbox")
