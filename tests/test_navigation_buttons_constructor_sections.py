@@ -19,34 +19,31 @@ class TestNavigationSections:
         )
         assert active_tab.text == "Соусы"
         assert "current" in sauces_tab.get_attribute("class")
-        driver.quit()
 
     def test_switch_to_toppings_section(self, driver):
         toppings_tab = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable(Locators.BUTTON_TOPPINGS)
         )
         toppings_tab.click()
-
         active_tab = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located(Locators.ACTIVE_SECTION)
         )
         assert active_tab.text == "Начинки"
         assert "current" in toppings_tab.get_attribute("class")
-        driver.quit()
 
     def test_switch_to_buns_section(self, driver):
         toppings_tab = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable(Locators.BUTTON_TOPPINGS)
         )
         toppings_tab.click()
-        toppings_tab = WebDriverWait(driver, 10).until(
+
+        buns_tab = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable(Locators.BUTTON_BUNS)
         )
-        toppings_tab.click()
+        buns_tab.click()
 
         active_tab = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located(Locators.ACTIVE_SECTION)
         )
-        assert active_tab.text == "Булки"
-        assert "current" in toppings_tab.get_attribute("class")
-        driver.quit()
+        assert active_tab.text == Credentials.name_section_buns
+        assert "current" in buns_tab.get_attribute("class")

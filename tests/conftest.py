@@ -18,32 +18,30 @@ def driver():
     options.add_argument("--disable-dev-shm-usage")
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=options)
-    driver.implicitly_wait(10)  # Неявные ожидания
+    driver.implicitly_wait(10)
     driver.get(main_site)
     yield driver
 
     driver.quit()
 
-
-@pytest.fixture
-def login(driver):
-    """
-    Фикстура только для выполнения авторизации (без перехода на страницу входа)
-    """
-    def _login():
-        driver.find_element(*Locators.LOG_EMAIL).send_keys(Credentials.email)
-        driver.find_element(*Locators.LOG_PASSWORD).send_keys(Credentials.password)
-        driver.find_element(*Locators.LOG_BUTTON).click()
-        return driver
-    return _login  # Возвращаем функцию, а не выполняем сразу
-
 @pytest.fixture
 def registration(driver):
     """
-    Фикстура для авторизации пользователя.
+    Фикстура для регистрации пользователя.
     """
     driver.find_element(*Locators.LOGIN_BUTTON).click()
     driver.find_element(*Locators.NEW_ACCOUNT).click()
 
     return driver
 
+@pytest.fixture
+def login(driver):
+    """
+    Фикстура только для выполнения авторизации (без перехода на страницу входа)
+    """
+    driver.find_element(*Locators.LOGIN_BUTTON).click()
+    driver.find_element(*Locators.LOG_EMAIL).send_keys(Credentials.email)
+    driver.find_element(*Locators.LOG_PASSWORD).send_keys(Credentials.password)
+    driver.find_element(*Locators.LOG_BUTTON).click()
+
+    return driver

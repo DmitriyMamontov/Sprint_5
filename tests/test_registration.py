@@ -19,7 +19,6 @@ class TestRegistrationWithNewCredentials:
                 EC.url_to_be("https://stellarburgers.nomoreparties.site/login")
             )
         assert driver.current_url == main_site + 'login'
-        driver.quit()
 
 class TestRegistrationAccountPreviouslyCreated:
 
@@ -32,7 +31,6 @@ class TestRegistrationAccountPreviouslyCreated:
         assert WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located(Locators.REG_POPUP_ERROR_USER)
         )
-        driver.quit()
 
 class TestRegistrationWithEmptyField:
 
@@ -45,7 +43,6 @@ class TestRegistrationWithEmptyField:
         assert WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located(Locators.REG_BUTTON)
         )
-        driver.quit()
 
     def test_stop_registration_account_empty_name(self, driver, registration):
         email, password, name = generate_registration_data()
@@ -56,7 +53,6 @@ class TestRegistrationWithEmptyField:
         assert WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located(Locators.REG_BUTTON)
         )
-        driver.quit()
 
     def test_stop_registration_account_empty_password(self, driver, registration):
         email, password, name = generate_registration_data()
@@ -67,7 +63,6 @@ class TestRegistrationWithEmptyField:
         assert WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located(Locators.REG_BUTTON)
         )
-        driver.quit()
 
 class TestRegistrationWithIncorrectPassword:
 
@@ -81,4 +76,3 @@ class TestRegistrationWithIncorrectPassword:
         assert WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located(Locators.REG_POPUP_ERROR_INCORRECT_PASSWORD)
         )
-        driver.quit()

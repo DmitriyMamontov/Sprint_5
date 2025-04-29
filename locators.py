@@ -6,14 +6,14 @@ class Locators:
     LOGIN_BUTTON = (By.XPATH, "//button[text()='Войти в аккаунт']") # Кнопка "Войти в аккаунт"
     NEW_ACCOUNT = (By.CSS_SELECTOR, "a[href='/register']") # Кнопка "Создать аккаунт"
     REG_BUTTON = (By.XPATH, "//button[text()='Зарегистрироваться']") # Кнопка "Зарегистрироваться"
-    NAME = (By.XPATH,"//fieldset[1]//input[@type='text']") # Поле ввода Имени
-    EMAIL = (By.XPATH,"//fieldset[2]//input[@type='text']") # Поле ввода Email
-    PASSWORD = (By.XPATH,"//fieldset[3]//input[@type='password']") # Поле ввода Пароля
+    NAME = (By.XPATH, "//label[text()='Имя']/following-sibling::input") # Поле ввода Имени
+    EMAIL = (By.XPATH, "//label[text()='Email']/following-sibling::input") # Поле ввода Email
+    PASSWORD = (By.XPATH, "//input[@type='password']") # Поле ввода Пароля
     LOG_BUTTON = (By.XPATH, "//button[text()='Войти']") # Кнопка "Войти"
     NEW_ORDER_BUTTON = (By.XPATH, "//button[text()='Оформить заказ']") # Кнопка "Новый заказ"
 
-    REG_POPUP_ERROR_USER = (By.XPATH, "//p[@class='input__error text_type_main-default' and text()='Такой пользователь уже существует']") # Сообщение что пользователь зарегистрирован
-    REG_POPUP_ERROR_INCORRECT_PASSWORD = (By.XPATH, "//p[@class='input__error text_type_main-default' and text()='Некорректный пароль']") # Сообщение о неправильном пароле
+    REG_POPUP_ERROR_USER = (By.XPATH, "//p[text()='Такой пользователь уже существует']") # Сообщение что пользователь зарегистрирован
+    REG_POPUP_ERROR_INCORRECT_PASSWORD = (By.XPATH, "//p[text()='Некорректный пароль']") # Сообщение о неправильном пароле
 
     LOG_EMAIL = (By.NAME, "name") # Поле ввода email на экране для входа
     LOG_PASSWORD = (By.NAME, "Пароль") # Поле ввода пароля на экране для входа

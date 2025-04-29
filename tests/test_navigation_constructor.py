@@ -9,21 +9,17 @@ from curl import *
 class TestNavigationToConstructor:
 
     def test_navigation_from_page_personal_account_click_on_button_constructor(self, driver, login):
-        driver.find_element(*Locators.LOGIN_BUTTON).click()
-        login()
+        driver = login
         driver.find_element(*Locators.PERSONAL_ACCOUNT).click()
         driver.find_element(*Locators.CONSTRUCTOR).click()
         assert WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located(Locators.CONSTRUCTOR_MENU)
         )
-        driver.quit()
 
     def test_navigation_from_page_personal_account_click_on_logo(self, driver, login):
-        driver.find_element(*Locators.LOGIN_BUTTON).click()
-        login()
+        driver = login
         driver.find_element(*Locators.PERSONAL_ACCOUNT).click()
         driver.find_element(*Locators.LOGO).click()
         assert WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located(Locators.CONSTRUCTOR_MENU)
         )
-        driver.quit()
